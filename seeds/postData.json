@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Try this neat CSS Trick!",
+    "content": "Instead of using media queries to size your containers, try container queries with @container which looks at the width of the parent container instead of the width of the viewport."
+  },
+  {
+    "title": "How do you generate a schema with Word Press?",
+    "content": "It is important to use schema generators because of SEO. It has the potential to boost your websites accessibility dramtically."
+  },
+  {
+    "title": "Anyone know an alternative for Heroku?",
+    "content": "Starting in November Heroku will no longer offer its free version. However students and beginners may want a server to host their projects for free. Any ideas?"
+  }
+]

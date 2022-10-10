@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Tim Cook",
+    "email": "timcook@email.com",
+    "password": "password12345"
+  },
+  {
+    "name": "Elon Musk",
+    "email": "elonmusk@email.com",
+    "password": "password12345"
+  },
+  {
+    "name": "Larry Page",
+    "email": "larrypage@email.com",
+    "password": "password12345"
+  }
+]
