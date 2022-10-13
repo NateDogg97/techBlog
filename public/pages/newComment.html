@@ -68,40 +68,42 @@
   </header>
 
   <main>
+    
+    <div class="container">
+      <div class="blogPost">
+        <div class="title bg-primary">
+          This Blog is Cool!
+        </div>
+        <div class="content bg-success">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero repellat amet aperiam mollitia odio tempora facere quasi eligendi iste quod. Esse, accusamus commodi tenetur deserunt alias vel doloremque? Asperiores, adipisci!
+        </div>
+        <div class="postInfo">
+          Posted by: Nate on Oct 10, 2022
+        </div>
+      </div>
+    </div>
 
-    <a href="#" class="blog-post">
     <div class="container">
-      <div class="blogPost">
-        <div class="title bg-primary">
-          This Blog is Cool!
+      <div class="new-comment">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+        <h3>Comment</h3>
+        <a href="#">Cancel</a>      
         </div>
-        <div class="content bg-success">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero repellat amet aperiam mollitia odio tempora facere quasi eligendi iste quod. Esse, accusamus commodi tenetur deserunt alias vel doloremque? Asperiores, adipisci!
-        </div>
-        <div class="postInfo">
-          Posted by: Nate on Oct 10, 2022
-        </div>
+        <form class="comment-form">
+          <div class="form-group">
+            <textarea class="form-control" id="comment-content" name="comment-content" rows="4" cols="4" max-length="250"></textarea>
+          </div>   
+        </form>
       </div>
     </div>
-    </a>
-    <a href="#" class="blog-post">
-    <div class="container">
-      <div class="blogPost">
-        <div class="title bg-primary">
-          This Blog is Cool!
-        </div>
-        <div class="content bg-success">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero repellat amet aperiam mollitia odio tempora facere quasi eligendi iste quod. Esse, accusamus commodi tenetur deserunt alias vel doloremque? Asperiores, adipisci!
-        </div>
-        <div class="postInfo">
-          Posted by: Nate on Oct 10, 2022
-        </div>
-      </div>
+
+    <div class="confirm-post">
+        <button type="button" class="btn btn-primary mx-auto px-5">Comment</button>
     </div>
-    </a>
 
   </main>
 
 </body>
     <script src="../scripts/dark-mode-switch.js"></script>
+    <script src="../scripts/comment.js"></script>
 </html>

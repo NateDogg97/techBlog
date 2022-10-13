@@ -1,0 +1,41 @@
+body {
+  font-family: "Poppins", sans-serif;
+}
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 123, 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+.custom-toggler.navbar-toggler {
+  border-color: rgb(0, 123, 255);
+}
+.nav-link{
+  text-align: end;
+}
+.navbar-expand-md .navbar-collapse {
+  justify-content: flex-end;
+}
+.container{
+  margin-top: 3rem;
+}
+input[type=text], input[type=password] {
+  background-color: rgb(250, 249, 246, 0.3);
+}
+::placeholder {
+  color: black;
+  opacity: 1;
+}
+.blog-post, .blog-post:focus, .blog-post:hover {
+  color: unset;
+  text-decoration: unset;
+}
+.newPost, .confirm-post {
+  display: flex;
+  flex-basis: 1;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 360px) {
+body {
+    min-width: 360px;
+}
+}
