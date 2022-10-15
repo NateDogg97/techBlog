@@ -9,9 +9,9 @@ router.get('/', async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['name'],
-        }
-      ]
+          attributes: ['user_name'],
+        },
+      ],
     });
 
     // Serialize data so the template can read it
@@ -33,7 +33,7 @@ router.get('/posts/:id', async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['name'],
+          attributes: ['user_name'],
         },
         {
           model: Comment
@@ -80,5 +80,14 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
+router.get('/signup', (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/dashboard');
+    return;
+  }
+
+  res.render('/signup');
+})
 
 module.exports = router;
