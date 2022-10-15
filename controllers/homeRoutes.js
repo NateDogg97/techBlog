@@ -10,11 +10,8 @@ router.get('/', async (req, res) => {
         {
           model: User,
           attributes: ['name'],
-        },
-        {
-          model: Comment
         }
-      ],
+      ]
     });
 
     // Serialize data so the template can read it

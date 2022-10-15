@@ -33,6 +33,22 @@ input[type=text], input[type=password] {
   margin-top: 30px;
   margin-bottom: 50px;
 }
+.comment-container {
+  width: 66.66%;
+  position: relative;
+  margin: 32px auto;
+}
+.commentSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.commentInfo {
+  display: flex;
+  justify-content: space-between;
+  width: 100%
+}
 
 @media (max-width: 360px) {
 body {
