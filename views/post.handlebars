@@ -1,2 +1,23 @@
 {{> posts}}
 
+<div class="container" id="post-form">
+  <div class="new-post">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+    <h3>New Post</h3>
+    <a href="#">Cancel</a>      
+    </div>
+    <form class="login-form">
+      <div class="form-group">
+        <label for="post-title">Title</label>
+        <input type="text" class="form-control" id="post-title">
+      </div>
+      <div class="form-group">
+        <label for="post-content">Content</label>
+        <textarea class="form-control" id="post-content" name="post-content" rows="10" cols="4" max-length="250"></textarea>
+      </div>   
+    </form>
+  </div>
+  <div class="confirm-post">
+    <button type="submit" class="btn btn-primary mx-auto px-5">Post</button>
+  </div>
+</div>

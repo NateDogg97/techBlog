@@ -37,6 +37,16 @@ const delButtonHandler = async (event) => {
   }
 };
 
+const displayPostForm = async (event) => {
+  document
+    .getElementById('post-form')
+    .removeAttribute('display');
+}
+
+document
+  .querySelector('.newPost')
+  .addEventListener('click', displayPostForm);
+
 document
   .querySelector('.new-post-form')
   .addEventListener('submit', newFormHandler);

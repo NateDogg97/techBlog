@@ -49,6 +49,9 @@ input[type=text], input[type=password] {
   justify-content: space-between;
   width: 100%
 }
+#post-form {
+  display: none;
+}
 
 @media (max-width: 360px) {
 body {

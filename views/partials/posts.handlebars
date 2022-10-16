@@ -1,13 +1,16 @@
 <div class="container">
   <div class="blogPost">
     <div class="title bg-primary">
-      {{title}}
+      {{post.title}}
     </div>
     <div class="content bg-success">
-      {{content}}
+      {{post.content}}
     </div>
     <div class="postInfo">
-      Posted by: {{user.user_name}} on {{format_date date_created}}
+      Posted by: {{post.user.user_name}} on {{format_date post.date_created}}
     </div>
   </div>
 </div>
+{{#each post.comments as |comment|}}
+{{> comments}}
+{{/each}}

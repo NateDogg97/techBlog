@@ -1,4 +1,20 @@
+{{#each user.posts as |post| }}
+<a href="/posts/{{post.id}}" class="blog-post">
+  <div class="container">
+    <div class="blogPost">
+      <div class="title bg-primary">
+        {{post.title}}
+      </div>
+      <div class="postInfo">
+        Posted on {{post.date_created}}
+      </div>
+    </div>
+  </div>
+</a>
+{{/each}}
+
 <div class="newPost">
     <button type="button" class="btn btn-primary mx-auto">New Post</button>
 </div>
 
+<script src="/scripts/dashboard.js"></script>
