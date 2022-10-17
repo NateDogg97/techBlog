@@ -37,7 +37,6 @@ router.get('/posts/:id', async (req, res) => {
         },
         {
           model: Comment,
-          as: 'comments',
           include: {
             model: User,
             attributes: ['user_name'],
@@ -49,7 +48,7 @@ router.get('/posts/:id', async (req, res) => {
     const post = postData.get({ plain: true });
     // res.status(200).json(post);
     res.render('post', {
-      post,
+      ...post,
       logged_in: req.session.logged_in
     });
   } catch (err) {
@@ -63,11 +62,14 @@ router.get('/dashboard', withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Post }],
+      include: [{
+        model: Post,
+      }],
     });
 
     const user = userData.get({ plain: true });
 
+    // res.status(200).json({ ...user, logged_in:true });
     res.render('dashboard', {
       ...user,
       logged_in: true
@@ -93,7 +95,7 @@ router.get('/signup', (req, res) => {
     return;
   }
 
-  res.render('/signup');
+  res.render('signup');
 })
 
 module.exports = router;

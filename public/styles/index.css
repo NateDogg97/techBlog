@@ -49,8 +49,17 @@ input[type=text], input[type=password] {
   justify-content: space-between;
   width: 100%
 }
-#post-form {
+.display {
+  display: flex;
+  flex-direction: column;
+}
+.display-none {
   display: none;
+}
+.no-button {
+  border: none;
+  background: none;
+  color:rgb(0, 123, 255);
 }
 
 @media (max-width: 360px) {
