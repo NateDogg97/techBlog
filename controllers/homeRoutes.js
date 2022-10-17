@@ -39,17 +39,18 @@ router.get('/posts/:id', async (req, res) => {
           model: Comment,
           include: {
             model: User,
-            attributes: ['user_name'],
+            attributes: ['id', 'user_name'],
           },
         },
       ],
     });
 
     const post = postData.get({ plain: true });
-    // res.status(200).json(post);
+    // res.status(200).json(req.session.user_id);
     res.render('post', {
       ...post,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      this_user: req.session.user_id,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -64,6 +65,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
       attributes: { exclude: ['password'] },
       include: [{
         model: Post,
+        attributes: ['id', 'title', 'date_created'],
       }],
     });
 

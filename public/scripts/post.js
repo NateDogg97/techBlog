@@ -1,34 +1,12 @@
 const newCommentHandler = async (event) => {
   event.preventDefault();
 
-  const title = document.getElementById('post-title').value.trim();
-  const content = document.getElementById('post-content').value.trim();
-
-  if (title && content) {
-    const response = await fetch(`api/posts`, {
-      method: 'POST',
-      body: JSON.stringify({ title, content }),
-      headers: {
-        'Content-Type': 'application/json',
-      },      
-    });
-  }
-}
-
-const displayCommentForm = async (event) => {
-  event.preventDefault();
-
-  const commentForm = document.getElementById('newComment-form');
   const content = document.getElementById('comment-content').value.trim();
 
-  if (commentForm.hasAttribute('diplay')) {
-    commentForm.removeAttribute('display');
-    return;
-
-  } else if (!content){
-    return;
-
-  } else {
+    if (!content) {
+      return;
+    }
+    
     const response = await fetch(`api/posts/comment/:id`, {
       method: 'POST',
       body: JSON.stringify({ content }),
@@ -42,16 +20,40 @@ const displayCommentForm = async (event) => {
     } else {
       alert('Failed to post comment');
     }
-  }
-
-
-
 }
 
-const hideCommentForm = async (event) => {
+const displayCommentForm = async (event) => {
   event.preventDefault();
 
-  document.getElementById('newComment-div').removeAttribute('dispaly');
-  document.getElementById('newComment-form').setAttribute('dispaly', 'none');  
+  const form = document.getElementById('new-comment-form');
+  const content = document.getElementById('comment-content');
+
+  form.classList.toggle('display-none');
+  content.value = "";
 }
 
+const editComment = async (event) => {
+
+}
+
+const deleteComment = async (event) => {
+
+}
+
+document
+  .getElementById('new-comment-button')
+  .addEventListener('click', displayCommentForm);
+
+document
+  .getElementById('cancel-comment-button')
+  .addEventListener('click', displayCommentForm);
+
+document
+  .getElementById('post-comment-button')
+  .addEventListener('click', newCommentHandler);
+
+document.getElementById('delete-comment')
+  .addEventListener('click', deleteComment);
+
+document.getElementById('edit-comment')
+  .addEventListener('click', editComment);

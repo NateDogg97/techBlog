@@ -4,7 +4,7 @@
   <div class="new-comment">
     <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
     <h3>Comment</h3>
-    <a href="#">Cancel</a>      
+    <button class="no-button" id="cancel-comment-button">Cancel</button>      
     </div>
     <form class="comment-form">
       <div class="form-group">
@@ -12,14 +12,17 @@
       </div>   
     </form>
   </div>
+  <div class="newPost">
+    <button type="button" class="btn btn-primary mx-auto" id="post-comment-button">Comment</button>
+  </div>
 </div>
 
 <div class="newPost" id="newComment-div">
-  <button type="button" class="btn btn-primary mx-auto" id="newComment-button">Comment</button>
+  <button type="button" class="btn btn-primary mx-auto" id="new-comment-button">Comment</button>
 </div>
 
 {{#each comments as |comment|}}
-{{> comments}}
+{{> comments this_user}}
 {{/each}}
 
 <script src="/scripts/post.js"></script>

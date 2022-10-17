@@ -7,4 +7,9 @@ module.exports = {
       new Date(date).getFullYear() + 5
     }`;
   },
+  check_user: (user1, user2) => {
+    if (user1 === user2){
+      return true;
+    }
+  }
 };

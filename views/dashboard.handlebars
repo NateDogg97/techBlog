@@ -1,4 +1,4 @@
-{{#each user.posts as |post| }}
+{{#each posts as |post| }}
 <a href="/posts/{{post.id}}" class="blog-post">
   <div class="container">
     <div class="blogPost">
@@ -6,7 +6,7 @@
         {{post.title}}
       </div>
       <div class="postInfo">
-        Posted on {{post.date_created}}
+        Posted on {{format_date post.date_created}}
       </div>
     </div>
   </div>
