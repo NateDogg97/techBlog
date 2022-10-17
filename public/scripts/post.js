@@ -27,8 +27,10 @@ const displayCommentForm = async (event) => {
 
   const form = document.getElementById('new-comment-form');
   const content = document.getElementById('comment-content');
+  const button = document.getElementById('new-comment-button');
 
   form.classList.toggle('display-none');
+  button.classList.toggle('display-none');
   content.value = "";
 }
 

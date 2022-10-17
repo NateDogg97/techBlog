@@ -1,6 +1,6 @@
 {{> posts}}
 
-<div class="container display-none" id="newComment-form">
+<div class="container display-none" id="new-comment-form">
   <div class="new-comment">
     <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
     <h3>Comment</h3>
@@ -22,7 +22,7 @@
 </div>
 
 {{#each comments as |comment|}}
-{{> comments this_user}}
+{{> comments this_user=../this_user}}
 {{/each}}
 
 <script src="/scripts/post.js"></script>
