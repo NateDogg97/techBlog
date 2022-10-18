@@ -22,32 +22,7 @@ const loginFormHandler = async (event) => {
   }
 };
   
-const signupFormHandler = async (event) => {
-  event.preventDefault();
-
-  const user_name = document.getElementById('username-signup').value.trim();
-  const password = document.getElementById('password-signup').value.trim();
-  const confirm = document.getElementById('password-confirm').value.trim();
-
-  if (user_name && password && password === confirm) {
-    const response = await fetch('/api/users', {
-      method: 'POST',
-      body: JSON.stringify({ user_name, password }),
-      headers: { 'Content-Type': 'application/json' },
-    });
-
-    if (response.ok) {
-      document.location.replace('/dashboard');
-    } else {
-      alert(response.statusText);
-    }
-  } alert('password do not match');
-};
-  
 document
   .getElementById('login-button')
   .addEventListener('click', loginFormHandler);
-
-document
-  .getElementById('signup-button')
-  .addEventListener('click', signupFormHandler);    
+  
