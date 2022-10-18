@@ -6,19 +6,23 @@ const newCommentHandler = async (event) => {
     if (!content) {
       return;
     }
-    
-    const response = await fetch(`api/posts/comment/:id`, {
-      method: 'POST',
-      body: JSON.stringify({ content }),
-      headers: {
-        'Content-Type': 'application/json',
-      },        
-    });
 
-    if (response.ok) {
-      document.location.replace('/posts/:id');
-    } else {
-      alert('Failed to post comment');
+    if (event.target.hasAttribute('data-post-id')) {
+      
+      const id = event.target.getAttribute('data-post-id');
+      const response = await fetch(`api/posts/comments/${id}`, {
+        method: 'POST',
+        body: JSON.stringify({ content }),
+        headers: {
+          'Content-Type': 'application/json',
+        },        
+      });      
+
+      if (response.ok) {
+        document.location.replace(`/posts/${id}`);
+      } else {
+        alert('Failed to post comment');
+      }
     }
 }
 

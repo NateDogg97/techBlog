@@ -61,6 +61,9 @@ input[type=text], input[type=password] {
   background: none;
   color:rgb(0, 123, 255);
 }
+.content {
+  width: 100%;
+}
 
 @media (max-width: 360px) {
 body {
