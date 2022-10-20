@@ -15,6 +15,7 @@ body {
 }
 .container{
   margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 input[type=text], input[type=password] {
   background-color: rgb(250, 249, 246, 0.3);
@@ -33,7 +34,7 @@ input[type=text], input[type=password] {
 .blogPost {
   padding: 8px;
   border-radius: 4px;
-  background-color: rgb(250, 249, 246);
+  background-color: rgb(250, 249, 246, 0.3);
 }
 .title, .postInfo, .postButtons {
   display: flex;
@@ -87,8 +88,16 @@ textarea:disabled, textarea, .form-control, .form-control:focus {
 .delete-post-button {
   margin-left:auto;
 }
+.title, .content {
+  padding: 12px;
+  border-bottom: 2px solid rgb(0, 123, 255);
+}
+.title {
+  border-radius: 4px 4px 0 0;
+}
 .content {
   width: 100%;
+  border-radius: 0 0 4px 4px;
 }
 .dash {
   border-color: rgb(0, 123, 255);
