@@ -50,7 +50,6 @@ const changeEdit = async (event) => {
     const deleteButton = document.getElementById(`delete-comment-${id}`);
     const editButton = document.getElementById(`edit-comment-${id}`);
     var editArea = document.getElementById(`edit-area-${id}`);
-    const content = editArea.value;
     const saved = editArea.defaultValue;
 
     if (editArea.disabled){
@@ -61,7 +60,7 @@ const changeEdit = async (event) => {
       deleteButton.innerHTML = "Cancel";
       deleteButton.classList.remove('delete-comment');
       deleteButton.classList.add('edit-comment');
-
+      newButtonsHandler();
     } else {
       editArea.disabled = true;
       editArea.value = saved;
@@ -70,29 +69,10 @@ const changeEdit = async (event) => {
       editButton.classList.add('edit-comment');           
       deleteButton.innerHTML = "Delete"; 
       deleteButton.classList.remove('edit-comment');
-      deleteButton.classList.add('delete-comment');           
+      deleteButton.classList.add('delete-comment');
+      newButtonsHandler();           
     }    
   }    
-
-
-  // if (event.target.hasAttribute('data-id')) {
-
-  //   const id = event.target.getAttribute('data-id');
-
-  //   const response = await fetch(`/api/posts/comments/${id}`, {
-  //     method: 'PUT',
-  //     body: JSON.stringify({ content }),
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   });
-
-  //   if (response.ok) {
-  //     document.location.replace(`/posts/${postId}`);
-  //   } else {
-  //     alert('Failed to delete comment');
-  //   }
-  // }
 }
 
 //------------------------------------------------------------------------------------------------//
@@ -100,14 +80,49 @@ const changeEdit = async (event) => {
 //------------------------------------------------------------------------------------------------//
 const editCommentHandler = async (event) => {
   event.preventDefault();
+
+  const id = event.target.getAttribute('data-id');
+  const content = document.getElementById(`edit-area-${id}`).value;
+  const postId = document.querySelector('.blogPost').getAttribute('data-post-id');
+
+  const response = await fetch(`/api/posts/comments/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify({ content }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (response.ok) {
+    document.location.replace(`/posts/${postId}`);
+  } else {
+    alert('Failed to delete comment');
+  }
+
 }
 
 //---------------------------------------------------------------------------------//
 // This function adds Event Listeners to the new buttons.                          //
 // "Post" is assigned editCommentHandler() while "Cancel" is assigned changeEdit() //
 //---------------------------------------------------------------------------------//
-const newButtonsHandler = async (event) => {
-  event.preventDefault();
+const newButtonsHandler = () => {
+  // event.preventDefault();
+  const id = document.querySelector('.edit-comment').getAttribute('data-id');
+  const edit = document.getElementById(`edit-comment-${id}`);
+  const del = document.getElementById(`delete-comment-${id}`);
+
+  if(!edit.classList.contains('edit-comment')) {
+
+    edit.addEventListener('click', editCommentHandler);
+    del.addEventListener('click', changeEdit);
+
+  } else {
+    
+    edit.removeEventListener('click', editCommentHandler);
+    del.removeEventListener('click', changeEdit);
+
+  }
+
 }
 
 const deleteComment = async (event) => {
