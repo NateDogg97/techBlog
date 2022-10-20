@@ -4,13 +4,13 @@
       <p>{{user.user_name}} said: {{format_date date_created}}</p>
       <div>
         {{#if (check_user user.id this_user)}}
-        <button class="no-button" id="edit-comment">Edit</button> | 
-        <button class="no-button" id="delete-comment">Delete</button>
+        <button class="no-button edit-comment" id="edit-comment-{{id}}" data-id="{{id}}">Edit</button> | 
+        <button class="no-button delete-comment" id="delete-comment-{{id}}" data-id="{{id}}">Delete</button>
         {{/if}}
       </div>        
     </div>
-    <div class="content">
-      {{content}}
-    </div>
+    <textarea class="content" id="edit-area-{{id}}" data-id="{{id}}" style="resize:none;" rows="2" disabled>
+{{content}}
+    </textarea>
   </div>
 </div>
