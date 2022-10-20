@@ -26,7 +26,7 @@
 
 {{#each posts as |post| }}
 <div class="container">
-  <div class="blogPost">
+  <div class="blogPost bg-light">
     <div class="title">
       <div>{{post.title}}</div>
       <div>Posted on {{format_date post.date_created}}</div>
@@ -36,7 +36,7 @@
       <button class="no-button edit-post" id="edit-post-{{post.id}}" data-id="{{post.id}}">Edit</button>
     </div>
     <div class="editPostForm">
-      <div class="hold display-none" id="edit-post-form-{{post.id}}">
+      <div class="display-none" id="edit-post-form-{{post.id}}">
         <div class="postContainer">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
           <h3>Edit Post</h3>

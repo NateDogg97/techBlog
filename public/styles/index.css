@@ -34,7 +34,6 @@ input[type=text], input[type=password] {
 .blogPost {
   padding: 8px;
   border-radius: 4px;
-  background-color: rgb(250, 249, 246, 0.3);
 }
 .title, .postInfo, .postButtons {
   display: flex;
