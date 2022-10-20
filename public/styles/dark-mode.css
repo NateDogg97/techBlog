@@ -55,7 +55,7 @@
   color: #eee !important;
 }
 
-[data-theme="dark"] input[type=text], input[type=password], textarea {
+[data-theme="dark"] input[type=text], input[type=password] {
   color: rgb(250, 249, 246);
   opacity: 1;
 }
@@ -65,23 +65,19 @@
 }
 
 [data-theme="dark"] input::placeholder {
+  color: rgb(250, 249, 246, .5);
+}
+
+[data-theme="dark"] input[type=text]:focus, input[type=password]:focus, .form-control, .form-control:focus {
   color: rgb(250, 249, 246);
-  opacity: 1;
 }
 
-[data-theme="dark"] input[type=text]:focus{
-  color:#000;
+[data-theme="dark"] textarea:disabled, textarea {
+  color:rgb(250, 249, 246);
+  background-color: rgb(250, 249, 246, 0.3);
 }
 
-.theme-color {
-  color: #5D3FD3;
-  transition: all .4s;
-}
-
-.theme-color-bg {
-  background-color: #5D3FD3;
-}
-
-.hover:hover{
-  color: #CF9FFF;
+[data-theme="light"] textarea:disabled, textarea {
+  color: black;
+  background-color: rgb(250, 249, 246, 0.3);
 }

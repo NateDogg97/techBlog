@@ -106,7 +106,7 @@ const editCommentHandler = async (event) => {
 // "Post" is assigned editCommentHandler() while "Cancel" is assigned changeEdit() //
 //---------------------------------------------------------------------------------//
 const newButtonsHandler = () => {
-  // event.preventDefault();
+
   const id = document.querySelector('.edit-comment').getAttribute('data-id');
   const edit = document.getElementById(`edit-comment-${id}`);
   const del = document.getElementById(`delete-comment-${id}`);
