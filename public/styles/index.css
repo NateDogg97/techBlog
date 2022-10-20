@@ -27,14 +27,31 @@ input[type=text], input[type=password] {
   color: unset;
   text-decoration: unset;
 }
+.no-decor, .no-decor:hover {
+  text-decoration: unset;
+}
+.blogPost {
+  padding: 8px;
+  border-radius: 4px;
+  background-color: rgb(250, 249, 246);
+}
+.title, .postInfo, .postButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+}
 .newPost, .confirm-post {
   display: flex;
   flex-basis: 1;
   margin-top: 30px;
   margin-bottom: 50px;
 }
-.form-control, .form-control:focus {
+textarea:disabled, textarea, .form-control, .form-control:focus {
+  color: black;
   background-color: rgb(250, 249, 246, 0.3);
+  overflow: hidden;
+  resize: none;
 }
 .comment-container {
   width: 66.66%;
@@ -64,12 +81,31 @@ input[type=text], input[type=password] {
   background: none;
   color:rgb(0, 123, 255);
 }
+.no-button:hover {
+  color: #0056b3;
+}
+.delete-post-button {
+  margin-left:auto;
+}
 .content {
   width: 100%;
+}
+.dash {
+  border-color: rgb(0, 123, 255);
+  border-left: 1px;
+  border-right: 1px;
+  border-top: 1px;
+  background: none;
+  color:rgb(0, 123, 255);
 }
 
 @media (max-width: 360px) {
 body {
     min-width: 360px;
+}
+}
+@media (min-width: 992px) {
+.container, .container-md, .container-sm {
+    max-width: 720px;
 }
 }

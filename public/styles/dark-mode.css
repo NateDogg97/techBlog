@@ -55,7 +55,7 @@
   color: #eee !important;
 }
 
-[data-theme="dark"] input[type=text], input[type=password] {
+[data-theme="dark"] input[type=text], [data-theme="dark"] input[type=password] {
   color: rgb(250, 249, 246);
   opacity: 1;
 }
@@ -68,16 +68,13 @@
   color: rgb(250, 249, 246, .5);
 }
 
-[data-theme="dark"] input[type=text]:focus, input[type=password]:focus, .form-control, .form-control:focus {
+[data-theme="dark"] input[type=text]:focus, [data-theme="dark"] input[type=password]:focus {
   color: rgb(250, 249, 246);
+  background-color: rgb(250, 249, 246, 0.3);
 }
 
-[data-theme="dark"] textarea:disabled, textarea {
+[data-theme="dark"] textarea:disabled, [data-theme="dark"] textarea, [data-theme="dark"] .form-control, [data-theme="dark"] .form-control:focus {
   color:rgb(250, 249, 246);
   background-color: rgb(250, 249, 246, 0.3);
 }
 
-[data-theme="light"] textarea:disabled, textarea {
-  color: black;
-  background-color: rgb(250, 249, 246, 0.3);
-}

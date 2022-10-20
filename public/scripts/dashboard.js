@@ -20,21 +20,45 @@ const newFormHandler = async (event) => {
     }
   }
 };
-  
-const delButtonHandler = async (event) => {
-  if (event.target.hasAttribute('data-id')) {
-    const id = event.target.getAttribute('data-id');
 
-    const response = await fetch(`/api/posts/${id}`, {
-      method: 'DELETE',
-    });
+const editFormHandler = async (event) => {
+  event.preventDefault();
 
+  const id = event.target.getAttribute('data-id');
+  const title = document.getElementById(`edit-title-${id}`).value.trim();
+  const content = document.getElementById(`edit-content-${id}`).value.trim();
+
+  if(title && content) {
+  const response = await fetch(`/api/posts/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify({ title, content }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }); 
     if (response.ok) {
       document.location.replace('/dashboard');
     } else {
-      alert('Failed to delete post');
+      alert('Failed to update post');
     }
   }
+}
+  
+const delButtonHandler = async (event) => {
+  event.preventDefault();
+
+  const id = event.target.getAttribute('data-id');
+
+  const response = await fetch(`/api/posts/${id}`, {
+    method: 'DELETE',
+  });
+
+  if (response.ok) {
+    document.location.replace('/dashboard');
+  } else {
+    alert('Failed to delete post');
+  }
+
 };
 
 const displayPostForm = async (event) => {
@@ -51,6 +75,28 @@ const displayPostForm = async (event) => {
   content.value = "";
 }
 
+const displayEditForm = async (event) => {
+  event.preventDefault();
+
+  const id = event.target.getAttribute(`data-id`);
+  const form = document.getElementById(`edit-post-form-${id}`); 
+  var title = document.getElementById(`edit-title-${id}`);
+  var content = document.getElementById(`edit-content-${id}`);
+  const editButton = document.getElementById(`edit-post-${id}`);
+  const savedTitle = title.defaultValue;
+  const savedContent = content.defaultValue;
+  
+  form.classList.toggle('display-none');
+  title.value = savedTitle;
+  content.value = savedContent;
+
+  if(editButton.innerHTML !== "Edit") {
+    editButton.innerHTML = "Edit"
+  } else {
+    editButton.innerHTML = "Cancel"
+  }
+}
+
 document
   .getElementById('cancel-post-button')
   .addEventListener('click', displayPostForm); 
@@ -63,6 +109,26 @@ document
   .getElementById('confirm-post-button')
   .addEventListener('click', newFormHandler);
 
-document
-  .querySelector('.post-list')
-  .addEventListener('click', delButtonHandler);
+const deletePostButtons = document.getElementsByClassName('delete-post-button');
+
+for (let i=0; i < deletePostButtons.length; i++) {
+  deletePostButtons[i].addEventListener('click', delButtonHandler);
+}
+
+const editButtons = document.getElementsByClassName('edit-post');
+
+for (let i=0; i < editButtons.length; i++) {
+  editButtons[i].addEventListener('click', displayEditForm);
+}
+
+const cancelEditButtons = document.getElementsByClassName('cancel-edit-button');
+
+for (let i=0; i < cancelEditButtons.length; i++) {
+  cancelEditButtons[i].addEventListener('click', displayEditForm);
+}
+
+const newEdit = document.getElementsByClassName('new-edit-button');
+
+for (let i=0; i < newEdit.length; i++) {
+  newEdit[i].addEventListener('click', editFormHandler);
+}
