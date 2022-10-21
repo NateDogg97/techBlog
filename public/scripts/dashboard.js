@@ -61,19 +61,39 @@ const delButtonHandler = async (event) => {
 
 };
 
-const displayPostForm = async (event) => {
-  event.preventDefault();
-
-  const form = document.getElementById('post-form'); 
+document.addEventListener('click', e => {
+  const isDropdownButton = e.target.matches("[data-dropdown-button]");
   const title = document.getElementById('post-title');
   const content = document.getElementById('post-content');
   const newPostButton = document.getElementById('new-post-button');
 
-  form.classList.toggle('display-none');
-  newPostButton.classList.toggle('display-none');
+  if(!isDropdownButton && e.target.closest('[data-dropdown]')) return;
+
+  let currentDropdown;
+  if(isDropdownButton) {
+    currentDropdown = e.target.closest('[data-dropdown]');
+    currentDropdown.classList.toggle('active');
+    newPostButton.classList.toggle('opacity-0');
+    newPostButton.classList.toggle('opacity-1')
+    title.value = "";
+    content.value = "";
+  }
+
+})
+
+// const displayPostForm = async (event) => {
+//   event.preventDefault();
+
+//   const form = document.getElementById('post-form'); 
+  const title = document.getElementById('post-title');
+  const content = document.getElementById('post-content');
+//   const newPostButton = document.getElementById('new-post-button');
+
+//   form.classList.toggle('display-none');
+//   newPostButton.classList.toggle('display-none');
   title.value = "";
   content.value = "";
-}
+// }
 
 const displayEditForm = async (event) => {
   event.preventDefault();
@@ -97,13 +117,13 @@ const displayEditForm = async (event) => {
   }
 }
 
-document
-  .getElementById('cancel-post-button')
-  .addEventListener('click', displayPostForm); 
+// document
+//   .getElementById('cancel-post-button')
+//   .addEventListener('click', displayPostForm); 
 
-document
-  .getElementById('new-post-button')
-  .addEventListener('click', displayPostForm);
+// document
+//   .getElementById('new-post-button')
+//   .addEventListener('click', displayPostForm);
 
 document
   .getElementById('confirm-post-button')

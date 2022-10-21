@@ -43,9 +43,8 @@ input[type=text], input[type=password] {
 }
 .newPost, .confirm-post {
   display: flex;
-  flex-basis: 1;
-  margin-top: 30px;
-  margin-bottom: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 textarea:disabled, textarea, .form-control, .form-control:focus {
   color: black;
@@ -69,12 +68,51 @@ textarea:disabled, textarea, .form-control, .form-control:focus {
   justify-content: space-between;
   width: 100%
 }
-.display {
+.opacity-0 {
+  opacity: 0;
+  transition: 300ms;
+}
+.opacity-1 {
+  opacity: 1;
+  transition: 300ms;
+}
+#post-form.container {
+  display: flex;
+  justify-content: center;
+}
+.dropdown {
+  position: relative;
+}
+.dropdownMenu {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* top: calc(100% + .25rem); */
+  padding: .75rem;
+  border-radius: .5rem;
+  box-shadow: 0 2px 5px 0 rgb(0, 0, 0, .1);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50px);
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+}
+.dropdown.active > .btn + .dropdownMenu {
+  opacity: 1;
+  transform: translateY(0px);
+  pointer-events: auto;
+}
+/* .absolute {
+  position: absolute;
+} */
+.center {
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
-.display-none {
-  display: none;
+.post-form-title {
+  display: flex;
+  justify-content: space-between;
 }
 .no-button {
   border: none;
