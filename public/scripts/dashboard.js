@@ -74,39 +74,123 @@ document.addEventListener('click', e => {
     currentDropdown = e.target.closest('[data-dropdown]');
     currentDropdown.classList.toggle('active');
     newPostButton.classList.toggle('opacity-0');
-    newPostButton.classList.toggle('opacity-1')
+    newPostButton.classList.toggle('opacity-1');
     title.value = "";
     content.value = "";
   }
+  // if(e.target.classList.contains('newPost-button')){
+  //   document.querySelectorAll('.myPosts').forEach(item => {
+  //     const a = item.getAttribute('data-translate');
+  //     console.log(a);
+  //     const b = parseFloat(a) + parseFloat(405);
+  //     item.setAttribute('style', `transform: translateY(${b}px);`);
 
-})
+  //   })
+  // }
+  // if (e.target.id === 'cancel-post-button'){
+  //   document.querySelectorAll('.myPosts').forEach(item => {
+  //     const a = item.getAttribute('data-translate');
+  //     console.log(a);
+  //     const b = parseFloat(a) - parseFloat(405);
+  //     item.setAttribute('style', `transform: translateY(${b}px);`);
+
+  //   })
+  // }
+});
+
+document.addEventListener('click', e => {
+  const isDropdownButton = e.target.matches("[data-dropdown-button-2]");
+
+  if(!isDropdownButton && e.target.closest('[data-dropdown-2]')) return;
+
+  let currentDropdown;
+  if(isDropdownButton) {
+    currentDropdown = e.target.closest('[data-dropdown-2]');
+    currentDropdown.classList.toggle('active');
+  }
+
+});
+
+function assignDataPost() {
+  document.querySelectorAll('.myPosts').forEach(function(post, index) {
+    post.setAttribute('data-post', index + 1);
+  })
+}
+
+const formDropdown = async (e) => {
+
+  document.querySelectorAll('.myPosts').forEach(item => {
+    const a = item.getAttribute('data-translate');
+
+  if(e.target.id === 'new-post-button'){
+      const b = parseFloat(a) + parseFloat(405);
+      item.setAttribute('style', `transform: translateY(${b}px);`);
+      item.setAttribute('data-translate', `${b}`);
+    }
+  if (e.target.id === 'cancel-post-button'){
+      const b = parseFloat(a) - parseFloat(405);
+      item.setAttribute('style', `transform: translateY(${b}px);`);
+      item.setAttribute('data-translate', `${b}`);
+    }
+  }) 
+}
+
+const postDropdown = async (e) => {
+  e.preventDefault();
+
+  const n = e.target.closest('[data-post]').getAttribute('data-post');
+  const p = document.querySelectorAll('.myPosts');
+
+  if(e.target.innerHTML === 'Edit'){
+
+    for(let i=parseInt(n); i < p.length; i++) {
+
+      const x = p[i].getAttribute('data-translate');
+      p[i].setAttribute('data-translate', parseInt(x) - parseInt(400));
+      const y = p[i].getAttribute('data-translate');
+      p[i].setAttribute('style', `transform: translateY(${y}px);`);
+    }    
+
+  } else {
+
+    for(let i=parseInt(n); i < p.length; i++) {
+
+      const x = p[i].getAttribute('data-translate');
+      p[i].setAttribute('data-translate', parseInt(x) + parseInt(400));
+      const y = p[i].getAttribute('data-translate');
+      p[i].setAttribute('style', `transform: translateY(${y}px);`);
+    }
+
+  }
+}
+
 
 // const displayPostForm = async (event) => {
 //   event.preventDefault();
 
 //   const form = document.getElementById('post-form'); 
-  const title = document.getElementById('post-title');
-  const content = document.getElementById('post-content');
+  // const title = document.getElementById('post-title');
+  // const content = document.getElementById('post-content');
 //   const newPostButton = document.getElementById('new-post-button');
 
 //   form.classList.toggle('display-none');
 //   newPostButton.classList.toggle('display-none');
-  title.value = "";
-  content.value = "";
+  // title.value = "";
+  // content.value = "";
 // }
 
 const displayEditForm = async (event) => {
   event.preventDefault();
 
   const id = event.target.getAttribute(`data-id`);
-  const form = document.getElementById(`edit-post-form-${id}`); 
+  // const form = document.getElementById(`edit-post-form-${id}`); 
   var title = document.getElementById(`edit-title-${id}`);
   var content = document.getElementById(`edit-content-${id}`);
   const editButton = document.getElementById(`edit-post-${id}`);
   const savedTitle = title.defaultValue;
   const savedContent = content.defaultValue;
   
-  form.classList.toggle('display-none');
+  ;
   title.value = savedTitle;
   content.value = savedContent;
 
@@ -117,17 +201,17 @@ const displayEditForm = async (event) => {
   }
 }
 
-// document
-//   .getElementById('cancel-post-button')
-//   .addEventListener('click', displayPostForm); 
-
-// document
-//   .getElementById('new-post-button')
-//   .addEventListener('click', displayPostForm);
+assignDataPost();
 
 document
   .getElementById('confirm-post-button')
   .addEventListener('click', newFormHandler);
+
+const newPostButtons = document.getElementsByClassName('newPost-button');
+
+for (let i=0; i < newPostButtons.length; i++) {
+  newPostButtons[i].addEventListener('click', formDropdown);
+}
 
 const deletePostButtons = document.getElementsByClassName('delete-post-button');
 
@@ -139,6 +223,10 @@ const editButtons = document.getElementsByClassName('edit-post');
 
 for (let i=0; i < editButtons.length; i++) {
   editButtons[i].addEventListener('click', displayEditForm);
+}
+
+for (let i=0; i < editButtons.length; i++) {
+  editButtons[i].addEventListener('click', postDropdown);
 }
 
 const cancelEditButtons = document.getElementsByClassName('cancel-edit-button');

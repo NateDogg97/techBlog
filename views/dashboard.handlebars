@@ -1,11 +1,11 @@
 
 <div class="container" id="post-form">
   <div class="dropdown center" data-dropdown>
-    <button type="button" class="btn btn-primary mx-auto opacity-1" id="new-post-button" data-dropdown-button>New Post</button>
-    <div class="dropdownMenu">
+    <button type="button" class="btn btn-primary mx-auto opacity-1 newPost-button" id="new-post-button" data-dropdown-button>New Post</button>
+    <div class="dropdownMenu bg-light">
       <div class="post-form-title">
         <h3>New Post</h3>
-        <button class="no-button" id="cancel-post-button" data-dropdown-button>Cancel</button>
+        <button class="no-button newPost-button" id="cancel-post-button" data-dropdown-button>Cancel</button>
       </div>
       <form class="login-form">
         <div class="form-group">
@@ -20,44 +20,47 @@
       <div class="confirm-post">
         <button type="button" class="btn btn-primary mx-auto px-4" id="confirm-post-button">Post</button>
       </div>
-    </div>
+    </div>    
     {{#each posts as |post| }}
-    <div class="absolute">
-    <div class="container">
-      <div class="blogPost bg-light">
+    <div class="myPosts" data-post="" data-translate="0" style="transform: translateY(0px);">
+
+      <div class="blogPost bg-light dropdown" data-dropdown-2>
         <div class="title">
           <div>{{post.title}}</div>
           <div>Posted on {{format_date post.date_created}}</div>
         </div>
         <div class="postButtons">
           <a href="/posts/{{post.id}}" class="no-decor">View Post</a>
-          <button class="no-button edit-post" id="edit-post-{{post.id}}" data-id="{{post.id}}">Edit</button>
+          <button class="no-button edit-post" id="edit-post-{{post.id}}" data-id="{{post.id}}" data-dropdown-button-2>Edit</button>
         </div>
-        <div class="editPostForm">
-          <div class="dropdown" id="edit-post-form-{{post.id}}">
-            <div class="postContainer">
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
-              <h3>Edit Post</h3>
-              <button class="no-button new-edit-button" id="new-edit-{{post.id}}" data-id="{{post.id}}">Post</button>
-              </div>
-              <form class="login-form">
-                <div class="form-group">
-                  <label for="edit-title-{{post.id}}">Title</label>
-                  <input type="text" class="form-control" id="edit-title-{{post.id}}" value="{{post.title}}">
+        <div class="dropdownMenu bg-light shift">
+          <div class="editPostForm">
+            <div class="dropdown" id="edit-post-form-{{post.id}}">
+              <div class="postContainer">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+                <h3>Edit Post</h3>
+                <button class="no-button new-edit-button" id="new-edit-{{post.id}}" data-id="{{post.id}}">Post</button>
                 </div>
-                <div class="form-group">
-                  <label for="edit-content-{{post.id}}">Content</label>
-                  <textarea class="form-control" id="edit-content-{{post.id}}" name="edit-content-{{post.id}}" rows="6" cols="4" max-length="250">{{post.content}}</textarea>
-                </div>   
-              </form>
-            </div>
-            <div style="width: 100%; display: flex; flex-direction:row-reverse;">
-              <button class="no-button delete-post-button text-danger" id="delete-post-{{post.id}}" data-id="{{post.id}}">Delete Post</button>
+                <form class="login-form">
+                  <div class="form-group">
+                    <label for="edit-title-{{post.id}}">Title</label>
+                    <input type="text" class="form-control" id="edit-title-{{post.id}}" value="{{post.title}}">
+                  </div>
+                  <div class="form-group">
+                    <label for="edit-content-{{post.id}}">Content</label>
+                    <textarea class="form-control" id="edit-content-{{post.id}}" name="edit-content-{{post.id}}" rows="6" cols="4" max-length="250">{{post.content}}</textarea>
+                  </div>   
+                </form>
+              </div>
+              <div style="width: 100%; display: flex; flex-direction:row-reverse;">
+                <button class="no-button delete-post-button text-danger" id="delete-post-{{post.id}}" data-id="{{post.id}}">Delete Post</button>
+              </div>
             </div>
           </div>
         </div>
+
       </div>
-    </div>  
+
     </div>
     {{/each}}
 

@@ -18,7 +18,7 @@ body {
   margin-bottom: 3rem;
 }
 input[type=text], input[type=password] {
-  background-color: rgb(250, 249, 246, 0.3);
+  /* background-color: rgb(250, 249, 246, 0.3); */
 }
 ::placeholder {
   color: black;
@@ -30,10 +30,6 @@ input[type=text], input[type=password] {
 }
 .no-decor, .no-decor:hover {
   text-decoration: unset;
-}
-.blogPost {
-  padding: 8px;
-  border-radius: 4px;
 }
 .title, .postInfo, .postButtons {
   display: flex;
@@ -48,7 +44,7 @@ input[type=text], input[type=password] {
 }
 textarea:disabled, textarea, .form-control, .form-control:focus {
   color: black;
-  background-color: rgb(250, 249, 246, 0.3);
+  /* background-color: rgb(250, 249, 246, 0.3); */
   overflow: hidden;
   resize: none;
 }
@@ -71,6 +67,7 @@ textarea:disabled, textarea, .form-control, .form-control:focus {
 .opacity-0 {
   opacity: 0;
   transition: 300ms;
+  pointer-events: none;
 }
 .opacity-1 {
   opacity: 1;
@@ -79,6 +76,9 @@ textarea:disabled, textarea, .form-control, .form-control:focus {
 #post-form.container {
   display: flex;
   justify-content: center;
+}
+.display-none {
+  display: none;
 }
 .dropdown {
   position: relative;
@@ -97,14 +97,30 @@ textarea:disabled, textarea, .form-control, .form-control:focus {
   transform: translateY(-50px);
   transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
 }
+.dropdown.active > .postButtons + .dropdownMenu,
 .dropdown.active > .btn + .dropdownMenu {
   opacity: 1;
   transform: translateY(0px);
   pointer-events: auto;
 }
-/* .absolute {
-  position: absolute;
-} */
+.shift {
+  right: 0px;
+  z-index: -10;
+}
+.blogPost {
+  padding: 8px;
+  border-radius: 4px 4px 0 0;  
+  /* top: 50px; */
+  box-shadow: 0 -2px 5px 0 rgb(0, 0, 0, .1);
+}
+.myPosts {
+  margin-top: 30px;
+  transform: translateY(0px);
+  transition: transform 300ms ease-in-out;
+}
+.myPosts.active {
+  transform: translateY(405px);
+}
 .center {
   width: 100%;
   display: flex;
