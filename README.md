@@ -22,7 +22,11 @@
   This project is covered under MIT license.
 
   ## Description
-
+  
+  https://intense-oasis-65970.herokuapp.com/
+  
+  ![Screen Shot 2022-10-28 at 3 45 03 PM](https://user-images.githubusercontent.com/106997623/198729478-7c2d37dc-34ab-4504-b290-27c7fefdd7c8.png)
+  
   Tech Blog is a site where users can create an account and post freely. Users may also comment on each others posts, edit their own posts and comments, and delete posts and comments. Users passwords must be at least 8 characters long. The goal is to provide a place for conversations and tips to be shared freely. It is supposed to be about technology, but there really is no restricitons. This project was built to practice using technologies such as Node.js, Express, Handlebars, MySQL, etc... Tech Blog solves the need for a space to embrace your inner nerd and express yourself free from censorship. There is no monitering the site, so please don't post anything innapropriate. Or do, because that's what freedom means. Working on this project, mostly I learned about UX and website design. Setting up the back-end for the site was relatively easy and didn't take me that much time. Most of my time was devoted to making the website look good. If I were to continue working on this site, there are many things I would improve / add to give the site a more professional look and improve functionality.
 
   ## Installation
