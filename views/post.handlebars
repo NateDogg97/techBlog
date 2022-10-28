@@ -1,28 +1,33 @@
 {{> posts}}
 
-<div class="container display-none" id="new-comment-form">
-  <div class="new-comment">
-    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
-    <h3>Comment</h3>
-    <button class="no-button" id="cancel-comment-button">Cancel</button>      
+<div class="container" id="new-comment-form">
+  <div class="dropdown center" data-dropdown>
+    <button type="button" class="btn btn-primary mx-auto newComment-button opacity-1" id="new-comment-button" data-dropdown-button>Comment</button>
+    <div class="dropdownMenu bg-light">
+      <div class="post-form-title">
+        <h3>Comment</h3>
+        <button class="no-button newComment-button" id="cancel-comment-button" data-dropdown-button>Cancel</button>      
+      </div>
+        <form class="comment-form">
+          <div class="form-group">
+            <textarea class="form-control" id="comment-content" name="comment-content" rows="4" cols="4" max-length="250"></textarea>
+          </div>   
+        </form>
+      <div class="newComment">
+        <button type="button" class="btn btn-primary mx-auto" id="post-comment-button" data-post-id="{{id}}">Comment</button>
+      </div>
     </div>
-    <form class="comment-form">
-      <div class="form-group">
-        <textarea class="form-control" id="comment-content" name="comment-content" rows="4" cols="4" max-length="250"></textarea>
-      </div>   
-    </form>
-  </div>
-  <div class="newPost">
-    <button type="button" class="btn btn-primary mx-auto" id="post-comment-button" data-post-id="{{id}}">Comment</button>
-  </div>
+  </div>  
 </div>
 
-<div class="newPost" id="newComment-div">
-  <button type="button" class="btn btn-primary mx-auto" id="new-comment-button">Comment</button>
-</div>
+{{!-- <div class="newPost" id="newComment-div">
+  <button type="button" class="btn btn-primary mx-auto newComment-button" id="new-comment-button" data-dropdown-button>Comment</button>
+</div> --}}
 
 {{#each comments as |comment|}}
 {{> comments this_user=../this_user}}
 {{/each}}
+
+
 
 <script src="/scripts/post.js"></script>

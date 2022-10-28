@@ -11,27 +11,27 @@
 }
 
 [data-theme="light"] {
-  transition: all .4s;
+  /* transition: all .4s; */
 }
 
 [data-theme="dark"] .bg-black {
   background-color: #fff !important;
-  transition: all .4s;
+  /* transition: all .4s; */
 }
 
 [data-theme="dark"] .bg-dark {
   background-color: #eee !important;
-  transition: all .4s;
+  /* transition: all .4s; */
 }
 
 [data-theme="dark"] .bg-light {
   background-color: #222 !important;
-  transition: .4s;
+  /* transition: .4s; */
 }
 
 [data-theme="dark"] .bg-white {
   background-color: #000 !important;
-  transition: .4s;
+  /* transition: .4s; */
 }
 
 [data-theme="dark"] .custom-control-label.pl-2 {
@@ -40,7 +40,7 @@
 
 [data-theme="dark"] .theme-color {
   color: #CF9FFF !important;
-  transition: all .4s;
+  /* transition: all .4s; */
 }
 
 [data-theme="dark"] .theme-color-bg {

@@ -42,6 +42,9 @@ input[type=text], input[type=password] {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+.newComment {
+  display:flex;
+}
 textarea:disabled, textarea, .form-control, .form-control:focus {
   color: black;
   /* background-color: rgb(250, 249, 246, 0.3); */
@@ -52,6 +55,7 @@ textarea:disabled, textarea, .form-control, .form-control:focus {
   width: 66.66%;
   position: relative;
   margin: 32px auto;
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
 }
 .commentSection {
   display: flex;
@@ -77,9 +81,9 @@ textarea:disabled, textarea, .form-control, .form-control:focus {
   display: flex;
   justify-content: center;
 }
-.display-none {
+/* .display-none {
   display: none;
-}
+} */
 .dropdown {
   position: relative;
 }

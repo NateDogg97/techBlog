@@ -23,16 +23,39 @@ const newCommentHandler = async (event) => {
   }
 }
 
-const displayCommentForm = async (event) => {
-  event.preventDefault();
-
-  const form = document.getElementById('new-comment-form');
+document.addEventListener('click', e => {
+  const isDropdownButton = e.target.matches("[data-dropdown-button]");
   const content = document.getElementById('comment-content');
-  const button = document.getElementById('new-comment-button');
+  const newPostButton = document.getElementById('new-comment-button');
 
-  form.classList.toggle('display-none');
-  button.classList.toggle('display-none');
-  content.value = "";
+  if(!isDropdownButton && e.target.closest('[data-dropdown]')) return;
+
+  let currentDropdown;
+  if(isDropdownButton) {
+    currentDropdown = e.target.closest('[data-dropdown]');
+    currentDropdown.classList.toggle('active');
+    newPostButton.classList.toggle('opacity-0');
+    newPostButton.classList.toggle('opacity-1');
+    content.value = "";
+  }
+});
+
+const formDropdown = async (e) => {
+
+  document.querySelectorAll('.comment-container').forEach(item => {
+    const a = item.getAttribute('data-translate');
+
+  if(e.target.id === 'new-comment-button'){
+      const b = parseFloat(a) + parseFloat(230);
+      item.setAttribute('style', `transform: translateY(${b}px);`);
+      item.setAttribute('data-translate', `${b}`);
+    }
+  if (e.target.id === 'cancel-comment-button'){
+      const b = parseFloat(a) - parseFloat(230);
+      item.setAttribute('style', `transform: translateY(${b}px);`);
+      item.setAttribute('data-translate', `${b}`);
+    }
+  }) 
 }
 
 //--------------------------------------------------------------------------------------------------------------------//
@@ -147,18 +170,8 @@ const deleteComment = async (event) => {
 }
 
 document
-  .getElementById('new-comment-button')
-  .addEventListener('click', displayCommentForm);
-
-document
-  .getElementById('cancel-comment-button')
-  .addEventListener('click', displayCommentForm);
-
-document
   .getElementById('post-comment-button')
   .addEventListener('click', newCommentHandler);
-
-
 
 const deleteCommentButtons = document.getElementsByClassName('delete-comment');
 
@@ -170,4 +183,10 @@ const changeEditButtons = document.getElementsByClassName('edit-comment');
 
 for (let i=0; i < changeEditButtons.length; i++) {
   changeEditButtons[i].addEventListener('click', changeEdit);
+}
+
+const newCommentButtons = document.getElementsByClassName('newComment-button');
+
+for (let i=0; i < newCommentButtons.length; i++) {
+  newCommentButtons[i].addEventListener('click', formDropdown);
 }
