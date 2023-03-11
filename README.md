@@ -1,5 +1,15 @@
 # Tech Blog
 
+  ## What Does This Website Do?
+  
+  View all posts of all users on the homepage. Click the dark-mode button the change between lightmode and darkmode. Login or create a new user to view       your dashboard and write new posts and comments. Users are able to edit their posts and comments. 
+  
+  ## How to edit posts / comments
+  
+  Click on your dashboard and select the post you wish to edit. You are able to edit the title and content of each post, cancel the edit with the cancel button, and also delete your post at the bottom of your comment. Disclaimer: I do not have confirmation verification on the delete button so once you press it once its gone. 
+  
+  Editing comments is easy. Just go to the post that you left a comment on scroll down to find your comment. There is an edit and delete button on each of your comments. Those buttons change to cancel and post once you start to edit your comment.
+
   ## Table of Contents:
 
   1. [License](#License)
